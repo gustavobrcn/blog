@@ -7,7 +7,7 @@ set :database, {adapter: 'sqlite3', database: './smash_blog.sqlite3'}
 enable :sessions
 
 get '/' do 
-    erb :home
+    erb :signup
 end
 
 get '/signup' do
