@@ -1,3 +1,14 @@
 body {
-    font-family: "Roboto";
+  margin: 0;
+  font-family: "Roboto";
 }
+
+.navbar {
+  display: flex;
+  text-align: center;
+  background-color: black;
+  text-decoration: none;
+  grid-template: repeat();
+}
+
+/*# sourceMappingURL=main.css.map */
