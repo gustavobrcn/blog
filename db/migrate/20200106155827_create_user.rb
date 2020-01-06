@@ -1,4 +1,4 @@
-class Users < ActiveRecord::Migration[6.0]
+class CreateUser < ActiveRecord::Migration[6.0]
   def change
     create_table :users do |t|
       t.string :first_name
@@ -11,6 +11,7 @@ class Users < ActiveRecord::Migration[6.0]
       t.string :sex
       t.string :posts
       t.string :main
+      t.date :date_created
     end
   end
 end
