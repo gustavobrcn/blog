@@ -48,8 +48,12 @@ get '/profile' do
 end
 
 post '/profile' do
-    @user = User.find_by(username: session[:user_id])
-    @user.update(posts: params["post"])
+    # @user = User.find_by(username: session[:user_id])
+    # @user.update(posts: params["post"])
+    @posts = Posts.new(session[:user_id], params["posts"])
+    if @posts.valid?
+        @posts.save
+    end
     erb :profile
 end
 
