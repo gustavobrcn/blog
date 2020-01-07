@@ -7,6 +7,8 @@ set :port, 3000
 set :database, {adapter: 'postgresql', database: 'smash_blog'}
 enable :sessions
 
+
+# ----------Sign Up----------
 get '/signup' do 
     erb :signup
 end
@@ -15,7 +17,7 @@ post '/signup' do
     @user = User.new(params[:user])
     if @user.valid?
         @user.save
-        session[:user_id] = @user.user_name
+        session[:username] = @user.user_name
         redirect '/profile'
     else
         puts flash[:error] = @user.errors.full_messages
@@ -25,6 +27,8 @@ post '/signup' do
     erb :profile
 end
 
+
+#----------Main Page and log in----------
 get '/' do
     erb :login
 end
@@ -33,29 +37,37 @@ post '/' do
     @user = User.find_by(username: params["username"])
     given_password = params["password"]
     if @user.password == given_password
-        session[:user_id] = @user.username
-        pp session[:user_id]
-        redirect '/profile'#("/profile/#{session[:user_id]}")
+        session[:username] = @user.username
+        pp session[:username]
+        pp @user.id
+        redirect "/profile/#{session[:username]}"
     else
         redirect '/login'
     end
     erb :profile
 end
 
-get '/profile' do
-    # redirect '/' unless session[:user_id]
+
+# ----------Making Posts on Profile----------
+get '/profile/:username' do
+    @user = User.find_by(username: session[:username])
     erb :profile
 end
 
 post '/profile' do
-    # @user = User.find_by(username: session[:user_id])
+    pp session[:username]
+    @user = User.find_by(username: session[:username])
+    pp @user
     # @user.update(posts: params["post"])
-    @posts = Posts.new(session[:user_id], params["posts"])
-    if @posts.valid?
-        @posts.save
+    @post = Posts.new(content: params["content"], user_id: @user.id)
+    if @post.valid?
+        @post.save
+        pp @post
+        redirect "/profile/#{session[:username]}"
     end
     erb :profile
 end
+
 
 get '/delete_account' do
     erb :delete_account
