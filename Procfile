@@ -1,1 +1,1 @@
-web: rerun server.rb
+web: ruby server.rb
