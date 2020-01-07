@@ -4,7 +4,6 @@ require "sinatra/flash"
 require './models'
 
 set :port, 3000
-# set :database, {adapter: 'sqlite3', database: './smash_blog.sqlite3'}
 set :database, {adapter: 'postgresql', database: 'smash_blog'}
 enable :sessions
 
@@ -14,25 +13,33 @@ end
 
 post '/signup' do
     @user = User.new(params[:user])
-    if @user.valid? & params[:password] == params["confirm_password"]
+    if @user.valid?
         @user.save
+        session[:user_id] = @user.user_name
         redirect '/profile'
     else
         puts flash[:error] = @user.errors.full_messages
         redirect '/signup'
     end
-    puts params[:password]
+    puts params["confirm_password"]
     erb :profile
 end
 
+get '/login' do
+    erb :login
+end
+
 post '/login' do
-    user = User.find_by(username: params[:username])
-    given_password = params[:password]
-    if user.password == given_password
-        session[:user_id] = user.id
+    @user = User.find_by(username: params["username"])
+    given_password = params["password"]
+    if @user.password == given_password
+        session[:user_id] = @user.username
         redirect '/profile'
     else
+        redirect '/login'
     end
+    pp @user.password
+    erb :profile
 end
 
 get '/profile' do
