@@ -25,25 +25,31 @@ post '/signup' do
     erb :profile
 end
 
-get '/login' do
+get '/' do
     erb :login
 end
 
-post '/login' do
+post '/' do
     @user = User.find_by(username: params["username"])
     given_password = params["password"]
     if @user.password == given_password
         session[:user_id] = @user.username
-        redirect '/profile'
+        pp session[:user_id]
+        redirect '/profile'#("/profile/#{session[:user_id]}")
     else
         redirect '/login'
     end
-    pp @user.password
     erb :profile
 end
 
 get '/profile' do
     # redirect '/' unless session[:user_id]
+    erb :profile
+end
+
+post '/profile' do
+    @user = User.find_by(username: session[:user_id])
+    @user.update(posts: params["post"])
     erb :profile
 end
 
