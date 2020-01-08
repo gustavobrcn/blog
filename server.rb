@@ -51,18 +51,22 @@ end
 # ----------Making Posts on Profile----------
 get '/profile/:username' do
     @user = User.find_by(username: session[:username])
+    session[:user_id] = @user.id
+    @user_posts = Posts.where(user_id: session[:user_id]).order(created_at: :desc)
+    pp @user_posts
     erb :profile
 end
 
 post '/profile' do
     pp session[:username]
     @user = User.find_by(username: session[:username])
-    pp @user
-    # @user.update(posts: params["post"])
+    session[:user_id] = @user.id
+    pp "this is from the post request"
     @post = Posts.new(content: params["content"], user_id: @user.id)
     if @post.valid?
         @post.save
-        pp @post
+        # @user_posts = Posts.where(user_id: session[:user_id]).order(created_at: :desc)
+        # pp @user_posts
         redirect "/profile/#{session[:username]}"
     end
     erb :profile
