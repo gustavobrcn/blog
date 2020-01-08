@@ -17,7 +17,7 @@ post '/signup' do
     @user = User.new(params[:user])
     if @user.valid?
         @user.save
-        session[:username] = @user.user_name
+        session[:username] = @user.username
         redirect '/profile'
     else
         puts flash[:error] = @user.errors.full_messages
@@ -51,30 +51,37 @@ end
 # ----------Making Posts on Profile----------
 get '/profile/:username' do
     @user = User.find_by(username: session[:username])
+    pp @user
     session[:user_id] = @user.id
     @user_posts = Posts.where(user_id: session[:user_id]).order(created_at: :desc)
-    pp @user_posts
     erb :profile
 end
 
 post '/profile' do
-    pp session[:username]
     @user = User.find_by(username: session[:username])
     session[:user_id] = @user.id
-    pp "this is from the post request"
     @post = Posts.new(content: params["content"], user_id: @user.id)
     if @post.valid?
         @post.save
         # @user_posts = Posts.where(user_id: session[:user_id]).order(created_at: :desc)
         # pp @user_posts
+        pp "this is from the post request"
         redirect "/profile/#{session[:username]}"
     end
     erb :profile
 end
 
 
-get '/delete_account' do
-    erb :delete_account
+get '/logout' do
+    session[:username] = nil
+    session[:user_id] = nil
+    # erb :login
+    redirect '/'
+end
+
+
+get '/settings/:username' do
+    erb :settings
 end
 
 post '/delete_account' do

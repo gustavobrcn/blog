@@ -5,3 +5,9 @@
     <input type="submit" value="Post">
 </form>
 
+
+<% @user_posts.each do |post|%>
+    <div>
+        <h3><%= post.content %> </h3>
+    </div>
+<% end %>

@@ -8,12 +8,16 @@
   </head>
   <body>
     <div class='navbar'>
-      <a href='/'>Home</a>
-      <a href='/signup'>Sign Up</a>
-      <a href='/profile'>Profile</a>
-      <a href='/login'>Log In</a>
-      <a href='/login'>Log Out</a>
-      <a href='/delete_account'>Delete Account</a>
+      <form >
+
+      </form>
+      <% if session[:username] %>
+        <a href="/profile">Profile</a>
+        <a href='/logout'>Log Out</a>
+        <a href='/settings'>settings</a>
+        <% else %>
+        <a href='/'>hello</a>
+      <% end %>
     </div>
     <%= yield %>
   <script src='main.js'></script>
