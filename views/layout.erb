@@ -7,14 +7,12 @@
     <title></title>
   </head>
   <body>
-    <div class='navbar'>
-      <form >
-
-      </form>
+    <div class='nav'>
       <% if session[:username] %>
-        <a href="/profile">Profile</a>
+        <a href="/profile/<%= session[:username] %>">Profile</a>
         <a href='/logout'>Log Out</a>
-        <a href='/settings'>settings</a>
+        <a href='/account'>Account</a>
+        <a href='/hub'>The Hub</a>
       <% end %>
     </div>
     <%= yield %>
