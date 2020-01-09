@@ -1,3 +1,28 @@
-<form action='/delete_account' method='POST'>
-    <input type="text" name="" placeholder="User Name">
+
+<p>First Name: <%= @user.first_name %> </p> 
+<p>Last ame: <%= @user.last_name %> </p> 
+<p>Username: <%= @user.username %> </p> 
+<p>Email: <%= @user.email %> </p> 
+<p>Birthday: <%= @user.birthday %> </p> 
+
+
+
+<h2> Change Username</h2>
+<form action='/change_username' method='POST'>
+    <label for="username">Enter new username</label><br>
+    <input type="text" name="new_username" placeholder="New User Name"><br>
+    <label for="password">Enter your password to confirm the change</label><br>
+    <input type="password" name="password" placeholder="Password">
+    <input type="submit" value="Change Username">
+</form>
+
+<h2> Change Password</h2>
+<form action='/change_password' method='POST'>
+    <label for="username">Enter current password</label><br>
+    <input type="password" name="current_password" placeholder="Current Password"><br>
+    <label for="password">Enter your new password</label><br>
+    <input type="password" name="new_password" placeholder="New Password">
+    <label for="password">Confirm your new password</label><br>
+    <input type="password" name="confirm_password" placeholder="Confirm New Password">
+    <input type="submit" value="Change Password">
 </form>

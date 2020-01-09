@@ -51,7 +51,7 @@ end
 # ----------Making Posts on Profile----------
 post '/profile' do
 @post = Post.new(content: params["content"], user_id: session[:user_id])
-    if @post.valid?
+    if @post.valid? && session[:user_id]
         @post.save
         redirect "/profile/#{session[:username]}"
     end
@@ -81,23 +81,42 @@ end
 
 # ----------User Account----------
 get '/account/:username' do
-    erb :settings
+    @user = User.find_by(id: session[:user_id])
+    erb :account
 end
 
+# ----------Change User Profile----------
 post '/account' do
-    user = User.find_by(params['user_name'])
-    user.destroy
-    erb :signup
+    user = User.find_by(id: session[:user_id])
+    erb :account
+end
+
+post '/change_username' do
+    @user = User.find_by(id: session[:user_id])
+    new_username = params["new_username"]
+    given_password = params["password"]
+    if given_password == @user.password
+        @user.update(username: new_username)
+        @user.username = session[:username]
+        redirect "/account/#{session[:username]}"
+    end
+end
+
+post '/change_password' do
+    @user = User.find_by(id: session[:user_id])
+    current_password = params["current_password"]
+    new_password = params["new_password"]
+    confirm_password = params["confirm_password"]
+    if current_password == @user.password && new_password == confirm_password
+        @user.update(password: new_password)
+        redirect "/account/#{session[:username]}"
+    end
 end
 
 # ---------- The Hub ----------
-get '/feed' do
+get '/hub' do
     @posts = Post.all
-    erb "<% @posts.each do |post| %>
-    <%= post.content %>
-    <%= post.user.username %>
-    <% end %>
-    "
+    erb :hub
 end
 
 # ----------Log out----------
