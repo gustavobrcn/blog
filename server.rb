@@ -18,6 +18,7 @@ post '/signup' do
     if @user.valid?
         @user.save
         session[:username] = @user.username
+        session[:user_id] = @user.id
         redirect '/profile'
     else
         puts flash[:error] = @user.errors.full_messages
@@ -33,14 +34,14 @@ get '/' do
     erb :login
 end
 
-post '/' do
+post '/login' do
     @user = User.find_by(username: params["username"])
     given_password = params["password"]
     if @user.password == given_password
         session[:username] = @user.username
         pp session[:username]
         pp @user.id
-        redirect "/profile/#{session[:username]}"
+        redirect "/profile"
     else
         redirect '/login'
     end
@@ -49,24 +50,26 @@ end
 
 
 # ----------Making Posts on Profile----------
-get '/profile/:username' do
+get '/profile' do
+    puts params
+    puts session
     @user = User.find_by(username: session[:username])
     pp @user
     session[:user_id] = @user.id
-    @user_posts = Posts.where(user_id: session[:user_id]).order(created_at: :desc)
+    # @user_posts = Post.where(user_id: session[:user_id]).order(created_at: :desc)
     erb :profile
 end
 
 post '/profile' do
     @user = User.find_by(username: session[:username])
     session[:user_id] = @user.id
-    @post = Posts.new(content: params["content"], user_id: @user.id)
+    @post = Post.new(content: params["content"], user_id: @user.id)
     if @post.valid?
         @post.save
         # @user_posts = Posts.where(user_id: session[:user_id]).order(created_at: :desc)
         # pp @user_posts
         pp "this is from the post request"
-        redirect "/profile/#{session[:username]}"
+        redirect "/profile"
     end
     erb :profile
 end
@@ -90,6 +93,15 @@ post '/delete_account' do
     erb :signup
 end
 
+
+get '/feed' do
+    @posts = Post.all
+    erb "<% @posts.each do |post| %>
+    <%= post.content %>
+    <%= post.user.username %>
+    <% end %>
+    "
+end
 # post '/profile' do 
 #     erb :profile
 # end

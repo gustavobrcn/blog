@@ -6,7 +6,7 @@
 </form>
 
 
-<% @user_posts.each do |post|%>
+<% @user.posts.order(created_at: :desc).limit(20).each do |post|%>
     <div>
         <h3><%= post.content %> </h3>
     </div>
