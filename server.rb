@@ -73,10 +73,13 @@ end
 post '/user' do
     @searched_user = User.find_by(username: params["searched_user"])
     session[:searched_user] = @searched_user.username
-    if params["searched_user"] == session[:username]
-        redirect '/profile'
-    else
+    if @searched_user.active == true
         redirect "/user/#{params["searched_user"]}"
+    elsif params["searched_user"] == session[:username]
+        redirect '/profile'
+    elsif @searched_user.active == false
+        redirect "/deactivated/#{session[:searched_user]}"
+        
     end
 end
 
@@ -148,6 +151,11 @@ end
 
 get '/reactivate' do
     erb :reactivate
+end
+
+# ----------Deactivated User Page----------
+get '/deactivated/:searched_user' do
+    erb :deactivated
 end
 
 # ----------Log out----------

@@ -1,3 +1,4 @@
+<h1><%=session[:searched_user]%>'s Profile</h1>
 <% @searched_user.posts.order(created_at: :desc).limit(20).each do |post|%>
     <div>
         <h3><%= post.content %> </h3>
