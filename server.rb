@@ -19,7 +19,7 @@ post '/signup' do
         @user.save
         session[:username] = @user.username
         session[:user_id] = @user.id
-        redirect '/profile'
+        redirect "/profile/#{session[:username]}"
     else
         puts flash[:error] = @user.errors.full_messages
         redirect '/signup'
@@ -30,6 +30,10 @@ end
 
 
 #----------Main Page and log in----------
+get '/login' do
+    redirect '/'
+end
+
 get '/' do
     erb :login
 end
@@ -37,7 +41,9 @@ end
 post '/login' do
     @user = User.find_by(username: params["username"])
     given_password = params["password"]
-    if @user.password == given_password
+    if @user.active == false
+        redirect '/reactivate'
+    elsif @user.password == given_password && @user.active
         session[:username] = @user.username
         session[:user_id] = @user.id
         redirect "/profile/#{params["username"]}"
@@ -79,6 +85,12 @@ get '/user/:serched_user' do
     erb :user
 end
 
+# ---------- The Hub ----------
+get '/hub' do
+    @posts = Post.all
+    erb :hub
+end
+
 # ----------User Account----------
 get '/account/:username' do
     @user = User.find_by(id: session[:user_id])
@@ -97,8 +109,8 @@ post '/change_username' do
     given_password = params["password"]
     if given_password == @user.password
         @user.update(username: new_username)
-        @user.username = session[:username]
-        redirect "/account/#{session[:username]}"
+        session[:username] = @user.username
+        redirect "/profile/#{session[:username]}"
     end
 end
 
@@ -109,21 +121,40 @@ post '/change_password' do
     confirm_password = params["confirm_password"]
     if current_password == @user.password && new_password == confirm_password
         @user.update(password: new_password)
-        redirect "/account/#{session[:username]}"
+        redirect "/profile/#{session[:username]}"
     end
 end
 
-# ---------- The Hub ----------
-get '/hub' do
-    @posts = Post.all
-    erb :hub
+post '/disable_account' do
+    @user = User.find_by(id: session[:user_id])
+    given_password = params["password"]
+    confirm_password = params["confirm_password"]
+    if given_password == confirm_password && given_password == @user.password
+        @user.update(active: false)
+        redirect '/logout'
+    end
+end
+
+# ----------Reactivate User----------
+post '/reactivate' do 
+    @user = User.find_by(username: params["username"])
+    reactivate_user = params["username"]
+    given_password = params["password"]
+    if  reactivate_user == @user.username && given_password == @user.password
+        @user.update(active: true)
+        redirect '/' 
+    end
+end
+
+get '/reactivate' do
+    erb :reactivate
 end
 
 # ----------Log out----------
 get '/logout' do
     session[:username] = nil
     session[:user_id] = nil
-    redirect '/'
+    redirect '/login'
 end
 
 

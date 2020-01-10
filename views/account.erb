@@ -8,16 +8,16 @@
 
 
 <h2> Change Username</h2>
-<form action='/change_username' method='POST'>
+<form action='/change_username' autocomplete="off" method='POST'>
     <label for="username">Enter new username</label><br>
-    <input type="text" name="new_username" placeholder="New User Name"><br>
+    <input type="text" name="new_username" autocomplete="off" placeholder="New User Name"><br>
     <label for="password">Enter your password to confirm the change</label><br>
-    <input type="password" name="password" placeholder="Password">
+    <input type="password" name="password" autocomplete="off" placeholder="Password">
     <input type="submit" value="Change Username">
 </form>
 
 <h2> Change Password</h2>
-<form action='/change_password' method='POST'>
+<form action='/change_password' autocomplete="off" method='POST'>
     <label for="username">Enter current password</label><br>
     <input type="password" name="current_password" placeholder="Current Password"><br>
     <label for="password">Enter your new password</label><br>
@@ -25,4 +25,13 @@
     <label for="password">Confirm your new password</label><br>
     <input type="password" name="confirm_password" placeholder="Confirm New Password">
     <input type="submit" value="Change Password">
+</form>
+
+<h2> Disable Account</h2>
+<form action="/disable_account" autocomplete="off" method="POST">
+    <label for="username">Enter your password</label><br>
+    <input type="password" name="password" placeholder=" Password"><br>
+    <label for="password">Confirm password</label><br>
+    <input type="password" name="confirm_password" placeholder="Confirm Password">
+    <input type="submit" value="Disable Account">
 </form>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_01_08_031501) do
+ActiveRecord::Schema.define(version: 2020_01_09_213040) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -33,6 +33,7 @@ ActiveRecord::Schema.define(version: 2020_01_08_031501) do
     t.string "posts"
     t.string "main"
     t.date "date_created"
+    t.boolean "active", default: true
   end
 
 end
