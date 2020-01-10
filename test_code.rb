@@ -5,9 +5,6 @@
 #     puts hashtag 
 # end
 
+x != nil
 
-t = Time.now
-
-
-
-puts t
+pp x

@@ -66,7 +66,7 @@ end
 get '/profile/:username' do
     @user = User.find_by(username: session[:username])
     session[:user_id] = @user.id
-    @get_friends = Friend.where(user_id: session[:user_id])
+    @get_friends = Friend.where(user_id: session[:user_id], friended: true)
     @friend_usernames = []
     @get_friends.each do |x|
         @friend_usernames << x.friend
@@ -91,23 +91,36 @@ end
 
 get '/user/:serched_user' do
     @searched_user = User.find_by(username: session[:searched_user])
-    @friend = Friend.find_by(username: session[:searched_user])
+    @user = User.find_by(username: session[:username])
+    session[:user_id] = @user.id
+    @find_friend = Friend.find_by(friend: session[:searched_user], user_id: session[:user_id])
+    pp @find_friend
     erb :user
 end
 
+
 # ----------Follow and Unfollow----------
 post '/follow' do
+    session[:searched_user]
     @follow_friend = Friend.find_by(friend: session[:searched_user])
-    if follow_friend == nil
-        follow_friend = Friend.new(user_id: session[:user_id], friend: session[:searched_user])
+    if @follow_friend == nil
+        @follow_friend = Friend.new(user_id: session[:user_id], friend: session[:searched_user])
         @follow_friend.save
+    elsif @follow_friend.friended == false
+        @refollow = Friend.find_by(friend: session[:searched_user])
+        @refollow.update(friended: true)
+    else
+        @new_follow = Friend.new(user_id: session[:user_id], friend: session[:searched_user])
+        @new_follow.save
     end
     redirect "/profile/#{session[:username]}"
 end
 
-post 'unfollow' do
-    @unfollow_friend = Friend.find_by(friend: session[:searched_user])
+post '/unfollow' do
+    @unfollow_friend = Friend.find_by(friend: session[:searched_user], user_id: session[:user_id])
+    pp @unfollow_friend
     @unfollow_friend.update(friended: false)
+    redirect "/profile/#{session[:username]}"
 end
 
 
