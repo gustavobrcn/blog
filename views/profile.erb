@@ -12,7 +12,14 @@
 
 
 <% @user.posts.order(created_at: :desc).limit(20).each do |post|%>
-    <div>
-        <h3><%= post.content %> </h3>
+    <div class="user-posts">
+        <h4><%= post.content %> </h4>
     </div>
 <% end %>
+
+<div class="friend-list">
+    <% @user.friends.each do |friend| %>
+        <a href="/user/<%= friend.friend %>"><%= friend.friend %> </a>
+        <% end %>
+</div>
+

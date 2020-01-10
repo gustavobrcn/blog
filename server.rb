@@ -66,6 +66,8 @@ end
 get '/profile/:username' do
     @user = User.find_by(username: session[:username])
     session[:user_id] = @user.id
+    # @user.friends.each
+    # @friends = Friend.where(user_id: session[:user_id])
     erb :profile
 end
 
@@ -84,8 +86,16 @@ post '/user' do
 end
 
 get '/user/:serched_user' do
+    pp :searched_user
     @searched_user = User.find_by(username: session[:searched_user])
     erb :user
+end
+
+# ----------Add Friend----------
+post '/add_friend' do
+    @added_friend = Friend.new(user_id: session[:user_id], friend: session[:searched_user])
+    @added_friend.save
+    redirect "/profile/#{session[:username]}"
 end
 
 # ---------- The Hub ----------
@@ -107,11 +117,16 @@ post '/account' do
 end
 
 post '/change_username' do
-    @user = User.find_by(id: session[:user_id])
     new_username = params["new_username"]
     given_password = params["password"]
+    @user = User.find_by(id: session[:user_id])
+    @friend = Friend.find_by(friend: session[:username])
+    if @friend == nil
+        @friend = Friend.new(user_id: nil, friend: new_username)
+    end
     if given_password == @user.password
         @user.update(username: new_username)
+        @friend.update(friend: new_username)
         session[:username] = @user.username
         redirect "/profile/#{session[:username]}"
     end
