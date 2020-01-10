@@ -85,10 +85,9 @@ post '/user' do
         redirect '/profile'
     elsif @searched_user.active == false
         redirect "/deactivated/#{session[:searched_user]}"
-        
     end
 end
-
+        
 get '/user/:serched_user' do
     @searched_user = User.find_by(username: session[:searched_user])
     @user = User.find_by(username: session[:username])
@@ -137,23 +136,20 @@ get '/account/:username' do
     erb :account
 end
 
-# ----------Change User Profile----------
-post '/account' do
-    user = User.find_by(id: session[:user_id])
-    erb :account
-end
-
+# ----------Change User Profile Attributes----------
 post '/change_username' do
     new_username = params["new_username"]
     given_password = params["password"]
     @user = User.find_by(id: session[:user_id])
-    @friend = Friend.find_by(friend: session[:username])
+    @friend = Friend.where(friend: session[:username]) #Username must be changed in the friends database aswell
     if @friend == nil
         @friend = Friend.new(user_id: nil, friend: new_username)
     end
     if given_password == @user.password
         @user.update(username: new_username)
-        @friend.update(friend: new_username)
+        @friend.each do |friend|
+            friend.update(friend: new_username)
+        end
         session[:username] = @user.username
         redirect "/profile/#{session[:username]}"
     end
@@ -209,23 +205,4 @@ end
 
 
 
-# $mains = ["Banjo & Kazooie", "Bayonetta", "Bowser", "Bowser Jr.", "Captain Falcon", "Charizard", "Chrom", "Cloud", "Corrin", "Daisy", "Dark Pit", "Dark Samsus", "Diddy Kong", "Donky Kong", "Dr. Mario", "Duck Hunt", "Falco", "Fox", "Ganondorf", "Greninja", "Hero", "Ice Climbers", "Ike", "Incineror", "Inkling", "Isabelle", "Ivysaur", "Jigglypuff", "Joke", "Ken", "King DeDe", "King K. Rool", "Kirby", "Link", "little Mac", "Lucario", "Lucas", "Lucina", "Luigi", "Mario", "Marth", "Mega Man", "Meta Knight", "Mewtwo", "Mii Brawler", "Mii Gunner", "Mii Swordfighter", "Mr. Game & Watch", "Ness", "Olimar", "Pac-Man", "Palutena", "Peach", "Pichu", "Pikachu", "Piranha Plant", "Pit", "Pokemon Trainer", "R.O.B.", "Richter", "Ridley", "Robin", "Rosalina & Luna", "Roy", "Ryu", "Samus", "Sheik", "Shulk", "Simon", "Snake", "Sonic", "Squirtle", "Terry", "Toon Link", "Villager", "Wario", "Wii Fit Trainer", "Wolf", "Yoshi", "Young Link", "Zelda", "Zero Suit Samus"]
-#
-# @friend = Friend.find_by(friend: "juan")
-# pp @friend.posts
-
-# @user = User.find_by(username: "gusbrcn") 
-# pp @user.posts
-# @arr = []
-# @friend = Friend.where(user_id: 2)
-# @friend.each do |x|
-#     @arr << x.friend
-# end
-# pp @arr
-
-# @posts = Post.where(username: @arr)
-# @posts.each do |post|
-#    pp post.username
-#     pp post.content 
-# end
 
