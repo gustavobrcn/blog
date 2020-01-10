@@ -56,7 +56,7 @@ end
 
 # ----------Making Posts on Profile----------
 post '/profile' do
-@post = Post.new(content: params["content"], user_id: session[:user_id])
+@post = Post.new(content: params["content"], user_id: session[:user_id], username: session[:username])
     if @post.valid? && session[:user_id]
         @post.save
         redirect "/profile/#{session[:username]}"
@@ -66,8 +66,12 @@ end
 get '/profile/:username' do
     @user = User.find_by(username: session[:username])
     session[:user_id] = @user.id
-    # @user.friends.each
-    # @friends = Friend.where(user_id: session[:user_id])
+    @get_friends = Friend.where(user_id: session[:user_id])
+    @friend_usernames = []
+    @get_friends.each do |x|
+        @friend_usernames << x.friend
+    end
+    @friend_posts = Post.where(username: @friend_usernames)
     erb :profile
 end
 
@@ -86,17 +90,27 @@ post '/user' do
 end
 
 get '/user/:serched_user' do
-    pp :searched_user
     @searched_user = User.find_by(username: session[:searched_user])
+    @friend = Friend.find_by(username: session[:searched_user])
     erb :user
 end
 
-# ----------Add Friend----------
-post '/add_friend' do
-    @added_friend = Friend.new(user_id: session[:user_id], friend: session[:searched_user])
-    @added_friend.save
+# ----------Follow and Unfollow----------
+post '/follow' do
+    @follow_friend = Friend.find_by(friend: session[:searched_user])
+    if follow_friend == nil
+        follow_friend = Friend.new(user_id: session[:user_id], friend: session[:searched_user])
+        @follow_friend.save
+    end
     redirect "/profile/#{session[:username]}"
 end
+
+post 'unfollow' do
+    @unfollow_friend = Friend.find_by(friend: session[:searched_user])
+    @unfollow_friend.update(friended: false)
+end
+
+
 
 # ---------- The Hub ----------
 get '/hub' do
@@ -183,4 +197,22 @@ end
 
 
 # $mains = ["Banjo & Kazooie", "Bayonetta", "Bowser", "Bowser Jr.", "Captain Falcon", "Charizard", "Chrom", "Cloud", "Corrin", "Daisy", "Dark Pit", "Dark Samsus", "Diddy Kong", "Donky Kong", "Dr. Mario", "Duck Hunt", "Falco", "Fox", "Ganondorf", "Greninja", "Hero", "Ice Climbers", "Ike", "Incineror", "Inkling", "Isabelle", "Ivysaur", "Jigglypuff", "Joke", "Ken", "King DeDe", "King K. Rool", "Kirby", "Link", "little Mac", "Lucario", "Lucas", "Lucina", "Luigi", "Mario", "Marth", "Mega Man", "Meta Knight", "Mewtwo", "Mii Brawler", "Mii Gunner", "Mii Swordfighter", "Mr. Game & Watch", "Ness", "Olimar", "Pac-Man", "Palutena", "Peach", "Pichu", "Pikachu", "Piranha Plant", "Pit", "Pokemon Trainer", "R.O.B.", "Richter", "Ridley", "Robin", "Rosalina & Luna", "Roy", "Ryu", "Samus", "Sheik", "Shulk", "Simon", "Snake", "Sonic", "Squirtle", "Terry", "Toon Link", "Villager", "Wario", "Wii Fit Trainer", "Wolf", "Yoshi", "Young Link", "Zelda", "Zero Suit Samus"]
+#
+# @friend = Friend.find_by(friend: "juan")
+# pp @friend.posts
+
+# @user = User.find_by(username: "gusbrcn") 
+# pp @user.posts
+# @arr = []
+# @friend = Friend.where(user_id: 2)
+# @friend.each do |x|
+#     @arr << x.friend
+# end
+# pp @arr
+
+# @posts = Post.where(username: @arr)
+# @posts.each do |post|
+#    pp post.username
+#     pp post.content 
+# end
 

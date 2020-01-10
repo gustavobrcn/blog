@@ -1,5 +1,10 @@
+<% if session[:user_id] == friend.user_id && friend.friended == true %>
+    <form action="/remove_friend" method="POST">
+        <input type="submit" value="Unfollow">
+    <form>
+
 <form action="/add_friend" method="POST">
-    <input type="submit" value="Add Friend">
+    <input type="submit" value="Follow">
 <form>
 <h1><%=session[:searched_user]%>'s Profile</h1>
 <% @searched_user.posts.order(created_at: :desc).limit(20).each do |post|%>
