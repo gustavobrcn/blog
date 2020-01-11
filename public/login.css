@@ -8,28 +8,28 @@ body {
   display: grid;
   grid-template: 100%/repeat(2, 50%);
 }
-.login-container .left-panel {
+.login-container .login-container__left {
   background-color: #795286;
   display: flex;
   align-items: center;
   justify-content: center;
   height: 100vh;
 }
-.login-container .left-panel .gold {
+.login-container .login-container__left .gold {
   color: #D5A848;
 }
-.login-container .left-panel h1 {
+.login-container .login-container__left h1 {
   color: white;
   font-size: 130pt;
   font-family: miama;
 }
-.login-container .right-panel {
+.login-container .login-container__right {
   display: flex;
   align-items: center;
   flex-direction: column;
   justify-content: space-evenly;
 }
-.login-container .right-panel .login .login-form_username {
+.login-container .login-container__right .login .login__username {
   background-color: whitesmoke;
   margin: 10px 0px;
   border-radius: 5px;
@@ -39,7 +39,7 @@ body {
   font-size: 12pt;
   padding-left: 10px;
 }
-.login-container .right-panel .login .login-form_password {
+.login-container .login-container__right .login .login__password {
   background-color: whitesmoke;
   margin: 10px 15px;
   border-radius: 5px;
@@ -49,7 +49,7 @@ body {
   font-size: 12pt;
   padding-left: 10px;
 }
-.login-container .right-panel .login .login-form_button {
+.login-container .login-container__right .login .login__button {
   color: #795286;
   background-color: white;
   margin: 10px 0px;
@@ -60,10 +60,10 @@ body {
   font-size: 12pt;
   text-align: center;
 }
-.login-container .right-panel h2 {
+.login-container .login-container__right h2 {
   margin-bottom: 60px;
 }
-.login-container .right-panel .signup-button {
+.login-container .login-container__right .links__signup-button {
   text-decoration: none;
   background: #795286;
   padding: 10px 140px 10px;

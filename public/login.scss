@@ -8,7 +8,7 @@ body {
     display: grid;
     grid-template:100%/repeat(2, 50%);
 
-    .left-panel {
+    .login-container__left {
         background-color: #795286;
         display: flex;
         align-items: center;
@@ -26,7 +26,7 @@ body {
         }
     }
 
-    .right-panel {
+    .login-container__right {
         display: flex;
         align-items: center;
         flex-direction: column;
@@ -34,7 +34,7 @@ body {
 
         .login {
 
-            .login-form_username {
+            .login__username {
                 background-color: whitesmoke;
                 margin: 10px 0px;
                 border-radius: 5px;
@@ -45,7 +45,7 @@ body {
                 padding-left: 10px;
             }
 
-            .login-form_password {
+            .login__password {
                 background-color: whitesmoke;
                 margin: 10px 15px;
                 border-radius: 5px;
@@ -56,7 +56,7 @@ body {
                 padding-left: 10px;
             }
 
-            .login-form_button {
+            .login__button {
                 color: #795286;
                 background-color: white;
                 margin: 10px 0px;
@@ -73,7 +73,7 @@ body {
            margin-bottom: 60px; 
         }
 
-        .signup-button {
+        .links__signup-button {
             text-decoration: none;
             background: #795286;
             padding: 10px 140px 10px;
