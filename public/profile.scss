@@ -4,13 +4,17 @@
     align-items: center;
 
     .user-searchbar {
-        background-color: whitesmoke;
-                margin: 10px 0px;
-                border-radius: 5px;
-                height: 45px;
-                width: 250px;
-                border: 2px solid #795286;
-                font-size: 12pt;
-                padding-left: 10px;
+
+        .user-searchbar__username {
+            background-color: whitesmoke;
+            margin: 10px 0px;
+            border-radius: 5px;
+            height: 45px;
+            width: 250px;
+            border: 2px solid #795286;
+            font-size: 12pt;
+            padding-left: 10px;
+        }
+
     }
 }

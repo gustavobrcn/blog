@@ -3,7 +3,7 @@
   justify-content: space-around;
   align-items: center;
 }
-.top-panel .user-searchbar {
+.top-panel .user-searchbar .user-searchbar__username {
   background-color: whitesmoke;
   margin: 10px 0px;
   border-radius: 5px;
