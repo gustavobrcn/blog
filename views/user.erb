@@ -1,15 +1,3 @@
-<% if @find_friend == nil or session[:user_id] == @find_friend.user_id && @find_friend.friended == false %>
-        <form action="/follow" method="POST">
-            <input type="submit" value="Follow">
-        <form>
-<% elsif session[:user_id] == @find_friend.user_id && @find_friend.friended == true %>
-    <form action="/unfollow" method="POST">
-        <input type="submit" value="Unfollow">
-    <form>
-<% end %>
-
-
-
 <h1><%=session[:searched_user]%>'s Profile</h1>
 <% @searched_user.posts.order(created_at: :desc).limit(20).each do |post|%>
     <div>

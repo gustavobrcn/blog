@@ -1,0 +1,85 @@
+body {
+  margin: 0;
+  font-family: "Helvetica Neue";
+}
+
+.login .login-form {
+  left: 50%;
+  top: 65px;
+}
+.login .login-form .login-form_username {
+  background-color: whitesmoke;
+  margin: 10px 0px;
+  border-radius: 15px;
+  height: 20px;
+  width: 250px;
+  border: 5px solid whitesmoke;
+  font-size: 10pt;
+  padding-left: 10px;
+}
+.login .login-form .login-form_password {
+  background-color: whitesmoke;
+  margin: 10px 0px;
+  border-radius: 15px;
+  height: 20px;
+  width: 250px;
+  border: 5px solid whitesmoke;
+  font-size: 10pt;
+  padding-left: 10px;
+}
+.login .login-form .login-form_button {
+  background-color: #d1a3e1;
+  margin: 10px 0px;
+  border-radius: 15px;
+  height: 30px;
+  width: 60px;
+  border: 5px solid #d1a3e1;
+  font-size: 10pt;
+  text-align: center;
+  color: white;
+}
+
+.signup-button {
+  background-color: #d1a3e1;
+  margin: 10px 0px;
+  border-radius: 15px;
+  height: 20px;
+  width: 280px;
+  border: 5px solid #d1a3e1;
+  font-size: 10pt;
+  text-align: center;
+  text-decoration: none;
+  color: white;
+  position: fixed;
+  left: 60%;
+  bottom: 30%;
+}
+
+.login-button {
+  background-color: #d1a3e1;
+  margin: 10px 0px;
+  border-radius: 15px;
+  height: 20px;
+  width: 280px;
+  border: 5px solid #d1a3e1;
+  font-size: 10pt;
+  text-align: center;
+  text-decoration: none;
+  color: white;
+  position: fixed;
+  left: 60%;
+  bottom: 25%;
+}
+
+.left-panel {
+  background-color: #d1a3e1;
+  height: 100%;
+  width: 35vw;
+}
+.left-panel h1 {
+  font-family: miama;
+  color: white;
+  font-size: 95pt;
+}
+
+/*# sourceMappingURL=login.css.map */

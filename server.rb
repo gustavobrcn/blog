@@ -20,11 +20,7 @@ post '/signup' do
         session[:username] = @user.username
         session[:user_id] = @user.id
         redirect "/profile/#{session[:username]}"
-    else
-        puts flash[:error] = @user.errors.full_messages
-        redirect '/signup'
     end
-    puts params["confirm_password"]
     erb :profile
 end
 
@@ -66,12 +62,6 @@ end
 get '/profile/:username' do
     @user = User.find_by(username: session[:username])
     session[:user_id] = @user.id
-    @get_friends = Friend.where(user_id: session[:user_id], friended: true)
-    @friend_usernames = []
-    @get_friends.each do |x|
-        @friend_usernames << x.friend
-    end
-    @friend_posts = Post.where(username: @friend_usernames)
     erb :profile
 end
 
@@ -92,37 +82,8 @@ get '/user/:serched_user' do
     @searched_user = User.find_by(username: session[:searched_user])
     @user = User.find_by(username: session[:username])
     session[:user_id] = @user.id
-    @find_friend = Friend.find_by(friend: session[:searched_user], user_id: session[:user_id])
-    pp @find_friend
     erb :user
 end
-
-
-# ----------Follow and Unfollow----------
-post '/follow' do
-    session[:searched_user]
-    @follow_friend = Friend.find_by(friend: session[:searched_user])
-    if @follow_friend == nil
-        @follow_friend = Friend.new(user_id: session[:user_id], friend: session[:searched_user])
-        @follow_friend.save
-    elsif @follow_friend.friended == false
-        @refollow = Friend.find_by(friend: session[:searched_user])
-        @refollow.update(friended: true)
-    else
-        @new_follow = Friend.new(user_id: session[:user_id], friend: session[:searched_user])
-        @new_follow.save
-    end
-    redirect "/profile/#{session[:username]}"
-end
-
-post '/unfollow' do
-    @unfollow_friend = Friend.find_by(friend: session[:searched_user], user_id: session[:user_id])
-    pp @unfollow_friend
-    @unfollow_friend.update(friended: false)
-    redirect "/profile/#{session[:username]}"
-end
-
-
 
 # ---------- The Hub ----------
 get '/hub' do
@@ -141,15 +102,8 @@ post '/change_username' do
     new_username = params["new_username"]
     given_password = params["password"]
     @user = User.find_by(id: session[:user_id])
-    @friend = Friend.where(friend: session[:username]) #Username must be changed in the friends database aswell
-    if @friend == nil
-        @friend = Friend.new(user_id: nil, friend: new_username)
-    end
     if given_password == @user.password
         @user.update(username: new_username)
-        @friend.each do |friend|
-            friend.update(friend: new_username)
-        end
         session[:username] = @user.username
         redirect "/profile/#{session[:username]}"
     end
@@ -202,7 +156,6 @@ get '/logout' do
     session[:user_id] = nil
     redirect '/login'
 end
-
 
 
 
