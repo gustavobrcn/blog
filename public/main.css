@@ -4,93 +4,73 @@ body {
   background-color: white;
 }
 
-.login {
-  position: absolute;
-  top: 10%;
-  left: 70%;
+.content-login {
+  display: grid;
+  grid-template: 100%/repeat(2, 50%);
 }
-.login .login-form_username {
+.content-login .left-panel {
+  background-color: #795286;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+.content-login .left-panel .gold {
+  color: #D5A848;
+}
+.content-login .left-panel h1 {
+  color: white;
+  font-size: 130pt;
+  font-family: miama;
+}
+.content-login .right-panel {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+.content-login .right-panel .login .login-form_username {
   background-color: whitesmoke;
   margin: 10px 0px;
   border-radius: 5px;
-  height: 30px;
+  height: 45px;
   width: 250px;
-  border: 5px solid whitesmoke;
+  border: 2px solid #795286;
   font-size: 12pt;
   padding-left: 10px;
 }
-.login .login-form_password {
+.content-login .right-panel .login .login-form_password {
   background-color: whitesmoke;
   margin: 10px 15px;
   border-radius: 5px;
-  height: 30px;
+  height: 45px;
   width: 250px;
-  border: 5px solid whitesmoke;
+  border: 2px solid #795286;
   font-size: 12pt;
   padding-left: 10px;
 }
-.login .login-form_button {
-  color: white;
-  background-color: #795286;
+.content-login .right-panel .login .login-form_button {
+  color: #795286;
+  background-color: white;
   margin: 10px 0px;
-  border-radius: 10px;
-  height: 45px;
-  width: 80px;
-  border: 5px solid #795286;
+  border-radius: 5px;
+  height: 51px;
+  width: 84px;
+  border: 4px solid #795286;
   font-size: 12pt;
   text-align: center;
 }
-
-.home-links {
-  position: absolute;
-  bottom: 20%;
-  left: 20%;
+.content-login .right-panel h2 {
+  margin-bottom: 60px;
 }
-.home-links .login-button {
-  background-color: #795286;
-  margin: 10px 0px;
-  border-radius: 15px;
-  height: 30px;
-  width: 300px;
-  border: 5px solid #795286;
-  font-size: 13pt;
-  text-align: center;
+.content-login .right-panel .signup-button {
   text-decoration: none;
-  color: white;
-  position: fixed;
-  left: 75%;
-  bottom: 30%;
-}
-.home-links .signup-button {
-  background-color: #795286;
-  margin: 10px 0px;
-  border-radius: 15px;
-  height: 30px;
-  width: 300px;
-  border: 5px solid #795286;
-  font-size: 13pt;
-  text-align: center;
-  text-decoration: none;
-  color: white;
-  position: fixed;
-  left: 75%;
-  bottom: 26%;
-}
-
-.left-panel {
-  position: absolute;
-  height: 100vh;
   background: #795286;
-  width: 50vw;
-}
-.left-panel h1 {
-  position: absolute;
-  color: white;
-  font-size: 100pt;
-  font-family: miama;
+  padding: 10px 140px 10px;
   text-align: center;
-  left: 10%;
-  bottom: 30%;
+  border-radius: 5px;
+  color: white;
+  font-weight: bold;
 }
 
 /*# sourceMappingURL=main.css.map */
