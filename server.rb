@@ -4,7 +4,7 @@ require "sinatra/flash"
 require './models'
 
 
-set :port, 3000
+# set :port, 3000
 
 
 configure :development do
