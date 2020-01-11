@@ -36,10 +36,10 @@ end
 
 #----------Main Page and log in----------
 get '/login' do
-    redirect '/home'
+    redirect '/'
 end
 
-get '/home' do
+get '/' do
     erb :login
 end
 
@@ -146,7 +146,7 @@ post '/reactivate' do
     given_password = params["password"]
     if  reactivate_user == @user.username && given_password == @user.password
         @user.update(active: true)
-        redirect '/home' 
+        redirect '/' 
     end
 end
 
