@@ -3,13 +3,6 @@ body {
   font-family: "Helvetica Neue";
 }
 
-.nav {
-  display: flex;
-  background-color: black;
-  text-decoration: none;
-  grid-template: repeat();
-}
-
 .login-form {
   position: relative;
   left: 60%;
