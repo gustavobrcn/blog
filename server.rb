@@ -3,10 +3,13 @@ require "sinatra/activerecord"
 require "sinatra/flash"
 require './models'
 
-set :port, 3000
-set :database, {adapter: 'postgresql', database: 'smash_blog'}
+configure :development do
+    set :database, {adapter: 'postgresql', database: 'smash_blog'}
+end
+configure :production do 
+    set :database, {url: ENV['DATABASE_URL']}
+end
 enable :sessions
-
 
 # ----------Sign Up----------
 get '/signup' do 
