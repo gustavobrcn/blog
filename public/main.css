@@ -1,42 +1,96 @@
 body {
   margin: 0;
   font-family: "Helvetica Neue";
+  background-color: #000000e0;
 }
 
-.login-form {
-  position: relative;
-  left: 60%;
-  top: 65px;
+.login {
+  position: absolute;
+  top: 10%;
+  left: 70%;
 }
-.login-form .login-form_username {
+.login .login-form_username {
   background-color: whitesmoke;
   margin: 10px 0px;
-  border-radius: 15px;
-  height: 20px;
+  border-radius: 5px;
+  height: 30px;
   width: 250px;
   border: 5px solid whitesmoke;
-  font-size: 10pt;
+  font-size: 12pt;
   padding-left: 10px;
 }
-.login-form .login-form_password {
+.login .login-form_password {
   background-color: whitesmoke;
-  margin: 10px 0px;
-  border-radius: 15px;
-  height: 20px;
+  margin: 10px 15px;
+  border-radius: 5px;
+  height: 30px;
   width: 250px;
   border: 5px solid whitesmoke;
-  font-size: 10pt;
+  font-size: 12pt;
   padding-left: 10px;
 }
-.login-form .login-form_button {
-  background-color: #d1a3e1;
+.login .login-form_button {
+  color: white;
+  background-color: #795286;
+  margin: 10px 0px;
+  border-radius: 10px;
+  height: 45px;
+  width: 80px;
+  border: 5px solid #795286;
+  font-size: 12pt;
+  text-align: center;
+}
+
+.home-links {
+  position: absolute;
+  bottom: 20%;
+  left: 20%;
+}
+.home-links .login-button {
+  background-color: #795286;
   margin: 10px 0px;
   border-radius: 15px;
   height: 30px;
-  width: 60px;
-  border: 5px solid #d1a3e1;
-  font-size: 10pt;
+  width: 300px;
+  border: 5px solid #795286;
+  font-size: 13pt;
   text-align: center;
+  text-decoration: none;
+  color: white;
+  position: fixed;
+  left: 75%;
+  bottom: 30%;
+}
+.home-links .signup-button {
+  background-color: #795286;
+  margin: 10px 0px;
+  border-radius: 15px;
+  height: 30px;
+  width: 300px;
+  border: 5px solid #795286;
+  font-size: 13pt;
+  text-align: center;
+  text-decoration: none;
+  color: white;
+  position: fixed;
+  left: 75%;
+  bottom: 26%;
+}
+
+.left-panel {
+  position: absolute;
+  height: 100vh;
+  background: #795286;
+  width: 50vw;
+}
+.left-panel h1 {
+  position: absolute;
+  color: white;
+  font-size: 100pt;
+  font-family: miama;
+  text-align: center;
+  left: 10%;
+  bottom: 30%;
 }
 
 /*# sourceMappingURL=main.css.map */
