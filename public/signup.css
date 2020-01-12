@@ -1,12 +1,9 @@
-<<<<<<< HEAD
-=======
 body {
   margin: 0;
   font-family: "Helvetica Neue";
   background-color: white;
 }
 
->>>>>>> development
 .signup-container {
   display: flex;
   justify-content: center;
@@ -19,14 +16,11 @@ body {
   flex-direction: column;
   justify-content: space-evenly;
 }
-<<<<<<< HEAD
-=======
 .signup-container .signup__form .labels {
   color: #795286;
   text-align: end;
   font-weight: bold;
 }
->>>>>>> development
 .signup-container .signup__form .signup__user-info {
   background-color: whitesmoke;
   margin: 10px 0px;
@@ -51,16 +45,6 @@ body {
   font-weight: bold;
   cursor: pointer;
 }
-<<<<<<< HEAD
-.signup-container .signup__form .signup__sex {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
-}
-.signup-container .signup__form .signup__sex .sex-type {
-  color: #795286;
-}
-=======
 .signup-container .signup__form .signup-sex {
   display: flex;
   flex-direction: unset;
@@ -80,6 +64,5 @@ body {
   border-radius: 3px;
   border: 2px solid #795286;
 }
->>>>>>> development
 
 /*# sourceMappingURL=signup.css.map */
