@@ -1,3 +1,12 @@
+<<<<<<< HEAD
+=======
+body {
+    margin: 0;
+    font-family: "Helvetica Neue";
+    background-color: white;
+}
+
+>>>>>>> development
 .signup-container {
     display: flex;
     justify-content: center;
@@ -10,6 +19,19 @@
         flex-direction: column;
         justify-content: space-evenly;
 
+<<<<<<< HEAD
+=======
+        .labels {
+            color:#795286;
+            text-align: end;
+            // text-decoration: underline;
+            font-weight: bold;
+            // text-shadow: -1px -1px #795286,
+            //             1px -1px #795286,
+            //             -1px 1px #795286,
+            //             1px 1px #795286;
+        }
+>>>>>>> development
         .signup__user-info {
             background-color: whitesmoke;
             margin: 10px 0px;
@@ -36,6 +58,7 @@
                 cursor: pointer;
         }
 
+<<<<<<< HEAD
         .signup__sex {
             display: flex;
             flex-direction: row;
@@ -46,3 +69,29 @@
         }
     }
 }
+=======
+        .signup-sex {
+            display: flex;
+            flex-direction: unset;
+            justify-content: space-evenly;
+            width: 10vw;
+            
+            label {
+                color: #795286;
+            }
+
+            input {
+                margin: 20px 10px 22px;
+            }
+
+            span {
+                background-color: white;
+                color: #795286;
+                padding: 5px;
+                border-radius: 3px;
+                border: 2px solid #795286;
+            }
+        }
+    }
+}
+>>>>>>> development
