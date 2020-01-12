@@ -1,6 +1,10 @@
-<h1><%=session[:searched_user]%>'s Profile</h1>
+<h1 class="greeting"><%=session[:searched_user]%>'s Profile</h1>
+<div class="profile-container__right">
 <% @searched_user.posts.order(created_at: :desc).limit(20).each do |post|%>
-    <div>
-        <h3><%= post.content %> </h3>
+    <div class="user-posts">
+        <div class="user-posts__post">
+            <h3><%= post.content %> </h3>
+        </div>
     </div>
 <% end %>
+</div>

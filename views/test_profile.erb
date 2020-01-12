@@ -24,12 +24,6 @@
         
         
         <div class="profile-container__right">
-            <div class="create-post">
-                <form class="create-post__form" action='/profile' method='POST'>
-                    <input class="create-post__text" type="text" name='content' placeholder="Speak Your Mind">
-                    <input class="create-post__button" type="submit" value="Post">
-                </form>
-            </div>
             <% @posts.each do |post|%>
                 <div class="user-posts">
                     <div class="user-posts__post">
