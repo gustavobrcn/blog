@@ -3,21 +3,41 @@
   <head>
     <link rel="stylesheet" href="/login.css">
     <link rel="stylesheet" href="/signup.css">
+    <link rel="stylesheet" href="/profile.css">
     <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet"> 
     <meta charset="utf-8">
     <title></title>
   </head>
   <body>
     <% if session[:username] %>
-      <div class='nav'>
-          <a href="/profile/<%= session[:username] %>">Profile</a>
-          <a href='/logout'>Log Out</a>
-          <a href='/account/<%= session[:username] %>'>Account</a>
-          <a href='/hub'>The Hub</a>
+    <div class="top-panel">
+        <h2>$ocial $tudio</h2> 
+        <div class="user-searchbar">
+            <form class="user-searchbar__form" action="/user" method="POST">
+                <input class="user-searchbar__username" type="text" name="searched_user" placeholder="Search For Users">
+                <input class="user-searchbar__button" type="submit" value="Find User">
+            </form>
+        </div>
+    </div>
+    <% if session[:searched_user]%>
+      <h1><%=session[:searched_user]%>'s Profile</h1>
+      <% else %>
+      <h1 class="greeting">Hello <%= session[:username]%></h1>
+    <% end %>
+      <div class="profile-container">
+        <div class="profile-container__left">
+            <div class='profile-navbar'>
+                <a href='/hub'>The Hub</a>
+                <a href="/profile/<%= session[:username] %>">Profile</a>
+                <a href='/account/<%= session[:username] %>'>Account</a>
+                <a href='/logout'>Log Out</a>
+          </div>
       </div>
     <% end %>
 
     <%= yield %>
+  </div>
   <%# <script src='/main.js'></script> %>
 </body>
 </html>
+
