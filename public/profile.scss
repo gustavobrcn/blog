@@ -7,6 +7,7 @@ body {
     display: flex;
     justify-content: space-around;
     align-items: center;
+    height: 15vh;
 
     h2 {
         font-size: 30pt;
@@ -40,21 +41,27 @@ body {
     }
 }
 
-.greeting {
-    text-align: center;
-    color: #795286;
-    font-size: 40pt;
-    // display: flex;
-    // align-items: center;
-    // justify-content: center;
-}
 
 .profile-container {
+    height: 100vh;
     display: grid;
-    grid-template: 100%/27% 70%;
+    grid-template-rows: 10% 90%;
+    grid-template-columns: 30% 70%;
+    grid-template-areas: 
+    'greet greet'
+    'left right';
+    grid-row-gap: 30px;
+    
+    .greeting {
+        text-align: center;
+        color: #795286;
+        font-size: 40pt;
+        grid-area: greet;
+    }
 
     .profile-container__left {
         width: 25vw;
+        grid-area: left;
         .profile-navbar {
             display: flex;
             align-items: center;
@@ -85,10 +92,11 @@ body {
         border-radius: 3px;
         height: auto;
         width: 50vw;
+        grid-area: right;
         
         .create-post__text {
             background-color: whitesmoke;
-            margin: 10px 0px;
+            margin-bottom: 25px;
             border-radius: 5px;
             height: 150px;
             width: 600px;
@@ -110,12 +118,13 @@ body {
         }
 
         .user-posts {
-            color: #795286;
+            color: black;
             border-top: 2px solid #795286;
             border-bottom: 2px solid #795286;
             border: 2px solid #795286;
             padding: 15px 200px 15px 200px;
             width: 40vh;
+            font-size: 14pt;
         }
     }
 }

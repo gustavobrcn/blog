@@ -63,7 +63,6 @@ post '/profile' do
 end
 
 get '/profile/:username' do
-    session[:searched_user] = nil
     @user = User.find_by(username: session[:username])
     session[:user_id] = @user.id
     erb :profile
@@ -91,14 +90,12 @@ end
 
 # ---------- The Hub ----------
 get '/hub' do
-    session[:searched_user] = nil
     @posts = Post.all
     erb :hub
 end
 
 # ----------User Account----------
 get '/account/:username' do
-    session[:searched_user] = nil
     @user = User.find_by(id: session[:user_id])
     erb :account
 end

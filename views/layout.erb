@@ -4,7 +4,8 @@
     <link rel="stylesheet" href="/login.css">
     <link rel="stylesheet" href="/signup.css">
     <link rel="stylesheet" href="/profile.css">
-    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Meie+Script&display=swap" rel="stylesheet"> 
     <meta charset="utf-8">
     <title></title>
   </head>
@@ -19,11 +20,6 @@
             </form>
         </div>
     </div>
-    <% if session[:searched_user]%>
-      <h1><%=session[:searched_user]%>'s Profile</h1>
-      <% else %>
-      <h1 class="greeting">Hello <%= session[:username]%></h1>
-    <% end %>
       <div class="profile-container">
         <div class="profile-container__left">
             <div class='profile-navbar'>

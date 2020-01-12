@@ -1,18 +1,6 @@
 
 
-<%# <div class="top-panel">
-        <h2>$ocial $tudio</h2> 
-        <div class="user-searchbar">
-            <form class="user-searchbar__form" action="/user" method="POST">
-                <input class="user-searchbar__username" type="text" name="searched_user" placeholder="Search For Users">
-                <input class="user-searchbar__button" type="submit" value="Find User">
-            </form>
-        </div>
-    </div>
-       %>
- <!-- greet user -->
-
-
+<h1 class="greeting">Hello <%= session[:username]%></h1>
 <div class="profile-container__right">
             <div class="create-post">
                 <form class="create-post__form" action='/profile' method='POST'>
