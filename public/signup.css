@@ -1,3 +1,9 @@
+body {
+  margin: 0;
+  font-family: "Helvetica Neue";
+  background-color: white;
+}
+
 .signup-container {
   display: flex;
   justify-content: center;
@@ -9,6 +15,11 @@
   align-items: center;
   flex-direction: column;
   justify-content: space-evenly;
+}
+.signup-container .signup__form .labels {
+  color: #795286;
+  text-align: end;
+  font-weight: bold;
 }
 .signup-container .signup__form .signup__user-info {
   background-color: whitesmoke;
@@ -34,13 +45,24 @@
   font-weight: bold;
   cursor: pointer;
 }
-.signup-container .signup__form .signup__sex {
+.signup-container .signup__form .signup-sex {
   display: flex;
-  flex-direction: row;
+  flex-direction: unset;
   justify-content: space-evenly;
+  width: 10vw;
 }
-.signup-container .signup__form .signup__sex .sex-type {
+.signup-container .signup__form .signup-sex label {
   color: #795286;
+}
+.signup-container .signup__form .signup-sex input {
+  margin: 20px 10px 22px;
+}
+.signup-container .signup__form .signup-sex span {
+  background-color: white;
+  color: #795286;
+  padding: 5px;
+  border-radius: 3px;
+  border: 2px solid #795286;
 }
 
 /*# sourceMappingURL=signup.css.map */
