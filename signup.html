@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <link rel="stylesheet" href="./public/signup.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet"> 
+    <meta charset="utf-8">
+    <title>Profile</title>
+  </head>
+  <body>
+    <div class="signup-container">
+        <div class="signup">
+            <form class="signup__form" action='/signup' method="POST">
+                <input class="signup__first-name signup__user-info" type="text" name="user[first_name]" placeholder="First Name">
+                <input class="signup__last-name signup__user-info" type="text" name="user[last_name]" placeholder="Last Name">
+                <input class="signup__birthday signup__user-info" type="date" name="user[birthday]">
+                <div class="signup-sex">
+                    <!-- <label> -->
+                        <input class="signup__sex-male" type="radio" name="user[sex]" value="Male"><span class="sex-type">Male</span>
+                    <!-- </label> -->
+                    <!-- <label> -->
+                        <input class="signup__sex-female" type="radio" name="user[sex]" value="Female"><span>Female</span>
+                    <!-- </label> -->
+                 </div>
+                <input class="signup__email signup__user-info" type="email" name="user[email]" placeholder="Email">
+                <input class="signup__username signup__user-info" type="text" name="user[username]" placeholder="Username"> 
+                <input class="signup__password signup__user-info" type="password" name="user[password]" placeholder="Password">
+                <input class="signup__button" type="submit" value="Create Account">
+            </form>
+        </div>
+    </div>
+</body> 
+</html>   
