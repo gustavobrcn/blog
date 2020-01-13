@@ -1,5 +1,12 @@
+<h1 class="greeting">Welcome to The Hub</h1>
+<div class="profile-container__right">
 <% @posts.order(created_at: :desc).limit(100).each do |post| %>
-    <% next if User.find_by(username: post.user.username).active == false%>
-    <h2><%= post.user.username %></h2>
-    <h3><%= post.content %></h3>
+        <% next if User.find_by(username: post.user.username).active == false%>
+    <div class="user-posts">
+        <div class="user-posts__post">
+            <span><p>@<%= post.user.username %></p></span>
+            <p><%= post.content %></p>
+        </div>
+    </div>
 <% end %>
+</div>

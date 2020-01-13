@@ -16,6 +16,9 @@ body {
   color: #795286;
   font-weight: bold;
 }
+.top-panel span {
+  color: #D5A848;
+}
 .top-panel .user-searchbar .user-searchbar__username {
   background-color: whitesmoke;
   margin: 10px 0px;
@@ -35,6 +38,7 @@ body {
   border: 4px solid #795286;
   font-size: 12pt;
   text-align: center;
+  cursor: pointer;
 }
 
 .profile-container {
@@ -112,6 +116,10 @@ body {
   border: 2px solid #795286;
   padding: 15px 200px 15px 200px;
   width: 40vh;
+  font-size: 14pt;
+}
+.profile-container .profile-container__right .user-posts .user-posts__post span {
+  color: grey;
   font-size: 12pt;
 }
 .profile-container .profile-container__right .account-page {
@@ -172,6 +180,7 @@ body {
   border: 5px solid #795286;
   font-size: 12pt;
   text-align: center;
+  cursor: pointer;
 }
 .profile-container .profile-container__right .account-page .change-password {
   grid-area: change-password;
@@ -216,6 +225,7 @@ body {
   border: 5px solid #795286;
   font-size: 12pt;
   text-align: center;
+  cursor: pointer;
 }
 .profile-container .profile-container__right .account-page .disable-account {
   grid-area: disable-account;
@@ -250,6 +260,19 @@ body {
   border: 5px solid #795286;
   font-size: 12pt;
   text-align: center;
+  cursor: pointer;
+}
+.profile-container .profile-container__right .hub-user-posts {
+  color: black;
+  border-top: 2px solid #795286;
+  border-bottom: 2px solid #795286;
+  border: 2px solid #795286;
+  padding: 15px 200px 15px 200px;
+  width: 40vh;
+  font-size: 12pt;
+}
+.profile-container .profile-container__right .hub-user-posts span {
+  color: grey;
 }
 
 /*# sourceMappingURL=profile.css.map */
