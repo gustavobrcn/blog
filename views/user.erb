@@ -3,7 +3,7 @@
 <% @searched_user.posts.order(created_at: :desc).limit(20).each do |post|%>
     <div class="user-posts">
         <div class="user-posts__post">
-            <h3><%= post.content %> </h3>
+            <p><%= post.content %> </p>
         </div>
     </div>
 <% end %>

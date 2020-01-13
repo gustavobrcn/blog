@@ -1,37 +1,46 @@
+<div class="profile-container__right">
+    <div class="account-page">
+        <div class="account-info">
+            <p><span>First Name: </span><%= @user.first_name %> </p> 
+            <p><span>Last Name: </span><%= @user.last_name %> </p> 
+            <p><span>Username: </span><%= @user.username %> </p> 
+            <p><span>Email: </span><%= @user.email %> </p> 
+            <p><span>Birthday: </span><%= @user.birthday %> </p> 
+        </div>
 
-<p>First Name: <%= @user.first_name %> </p> 
-<p>Last ame: <%= @user.last_name %> </p> 
-<p>Username: <%= @user.username %> </p> 
-<p>Email: <%= @user.email %> </p> 
-<p>Birthday: <%= @user.birthday %> </p> 
+        <div class="change-username">
+            <h2> Change Username</h2>
+            <form class="change-username__form"action='/change_username' autocomplete="off" method='POST'>
+                <label for="username">Enter new username</label><br>
+                <input class="change-username__text" type="text" name="new_username" autocomplete="off" placeholder="New User Name"><br>
+                <label for="password">Enter your password to confirm the change</label><br>
+                <input class="change-username__password" type="password" name="password" autocomplete="off" placeholder="Password">
+                <input class="change-username__button" type="submit" value="Change Username">
+            </form>
+        </div>
 
+        <div class="change-password">
+            <h2> Change Password</h2>
+            <form class="change-password__from" action='/change_password' autocomplete="off" method='POST'>
+                <label for="username">Enter current password</label><br>
+                <input class="change-password__current-password" type="password" name="current_password" placeholder="Current Password"><br>
+                <label for="password">Enter your new password</label><br>
+                <input class="change-password__new-password" type="password" name="new_password" placeholder="New Password">
+                <label for="password">Confirm your new password</label><br>
+                <input class="change-password__confirm-password" type="password" name="confirm_password" placeholder="Confirm New Password">
+                <input class="change-password__button" type="submit" value="Change Password">
+            </form>
+        </div>
 
-
-<h2> Change Username</h2>
-<form action='/change_username' autocomplete="off" method='POST'>
-    <label for="username">Enter new username</label><br>
-    <input type="text" name="new_username" autocomplete="off" placeholder="New User Name"><br>
-    <label for="password">Enter your password to confirm the change</label><br>
-    <input type="password" name="password" autocomplete="off" placeholder="Password">
-    <input type="submit" value="Change Username">
-</form>
-
-<h2> Change Password</h2>
-<form action='/change_password' autocomplete="off" method='POST'>
-    <label for="username">Enter current password</label><br>
-    <input type="password" name="current_password" placeholder="Current Password"><br>
-    <label for="password">Enter your new password</label><br>
-    <input type="password" name="new_password" placeholder="New Password">
-    <label for="password">Confirm your new password</label><br>
-    <input type="password" name="confirm_password" placeholder="Confirm New Password">
-    <input type="submit" value="Change Password">
-</form>
-
-<h2> Disable Account</h2>
-<form action="/disable_account" autocomplete="off" method="POST">
-    <label for="username">Enter your password</label><br>
-    <input type="password" name="password" placeholder=" Password"><br>
-    <label for="password">Confirm password</label><br>
-    <input type="password" name="confirm_password" placeholder="Confirm Password">
-    <input type="submit" value="Disable Account">
-</form>
+        <div class="disable-account">
+            <h2> Disable Account</h2>
+            <form class="disable-account__form" action="/disable_account" autocomplete="off" method="POST">
+                <label for="username">Enter your password</label><br>
+                <input class="disable-account__password" type="password" name="password" placeholder=" Password"><br>
+                <label for="password">Confirm password</label><br>
+                <input class="disable-account__confirm-password" type="password" name="confirm_password" placeholder="Confirm Password">
+                <input class="disable-account__button" type="submit" value="Disable Account">
+            </form>
+        </div>
+    </div>
+</div>

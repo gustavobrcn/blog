@@ -112,7 +112,144 @@ body {
   border: 2px solid #795286;
   padding: 15px 200px 15px 200px;
   width: 40vh;
+  font-size: 12pt;
+}
+.profile-container .profile-container__right .account-page {
+  display: grid;
+  grid-template-rows: auto;
+  grid-template-columns: 50% 50%;
+  grid-template-areas: "info change-username" "info change-password" "info disable-account";
+}
+.profile-container .profile-container__right .account-page h2 {
+  color: #795286;
+}
+.profile-container .profile-container__right .account-page label {
   font-size: 14pt;
+  font-weight: bold;
+}
+.profile-container .profile-container__right .account-page .account-info {
+  display: flex;
+  flex-direction: column;
+  align-items: end;
+  font-size: 14pt;
+  grid-area: info;
+}
+.profile-container .profile-container__right .account-page .account-info span {
+  font-weight: bold;
+  color: #795286;
+  font-size: 16pt;
+}
+.profile-container .profile-container__right .account-page .change-username {
+  grid-area: change-username;
+  border-bottom: 3px solid #795286;
+}
+.profile-container .profile-container__right .account-page .change-username .change-username__text {
+  background-color: whitesmoke;
+  margin: 5px 0px;
+  border-radius: 5px;
+  height: 40px;
+  width: 350px;
+  border: 2px solid #795286;
+  font-size: 12pt;
+  padding-left: 10px;
+}
+.profile-container .profile-container__right .account-page .change-username .change-username__password {
+  background-color: whitesmoke;
+  margin: 5px 0px;
+  border-radius: 5px;
+  height: 40px;
+  width: 350px;
+  border: 2px solid #795286;
+  font-size: 12pt;
+  padding-left: 10px;
+}
+.profile-container .profile-container__right .account-page .change-username .change-username__button {
+  color: #795286;
+  margin: 10px 0px;
+  border-radius: 5px;
+  height: 45px;
+  width: 150px;
+  border: 5px solid #795286;
+  font-size: 12pt;
+  text-align: center;
+}
+.profile-container .profile-container__right .account-page .change-password {
+  grid-area: change-password;
+  border-bottom: 3px solid #795286;
+}
+.profile-container .profile-container__right .account-page .change-password .change-password__current-password {
+  background-color: whitesmoke;
+  margin: 5px 0px;
+  border-radius: 5px;
+  height: 40px;
+  width: 350px;
+  border: 2px solid #795286;
+  font-size: 12pt;
+  padding-left: 10px;
+}
+.profile-container .profile-container__right .account-page .change-password .change-password__new-password {
+  background-color: whitesmoke;
+  margin: 5px 0px;
+  border-radius: 5px;
+  height: 40px;
+  width: 350px;
+  border: 2px solid #795286;
+  font-size: 12pt;
+  padding-left: 10px;
+}
+.profile-container .profile-container__right .account-page .change-password .change-password__confirm-password {
+  background-color: whitesmoke;
+  margin: 5px 0px;
+  border-radius: 5px;
+  height: 40px;
+  width: 350px;
+  border: 2px solid #795286;
+  font-size: 12pt;
+  padding-left: 10px;
+}
+.profile-container .profile-container__right .account-page .change-password .change-password__button {
+  color: #795286;
+  margin: 10px 0px;
+  border-radius: 5px;
+  height: 45px;
+  width: 150px;
+  border: 5px solid #795286;
+  font-size: 12pt;
+  text-align: center;
+}
+.profile-container .profile-container__right .account-page .disable-account {
+  grid-area: disable-account;
+  margin-bottom: 20px;
+}
+.profile-container .profile-container__right .account-page .disable-account .disable-account__password {
+  background-color: whitesmoke;
+  margin: 5px 0px;
+  border-radius: 5px;
+  height: 40px;
+  width: 350px;
+  border: 2px solid #795286;
+  font-size: 12pt;
+  padding-left: 10px;
+}
+.profile-container .profile-container__right .account-page .disable-account .disable-account__confirm-password {
+  background-color: whitesmoke;
+  margin: 5px 0px;
+  border-radius: 5px;
+  height: 40px;
+  width: 350px;
+  border: 2px solid #795286;
+  font-size: 12pt;
+  padding-left: 10px;
+}
+.profile-container .profile-container__right .account-page .disable-account .disable-account__button {
+  color: #795286;
+  margin: 10px 0px;
+  border-radius: 5px;
+  height: 45px;
+  width: 150px;
+  border: 5px solid #795286;
+  font-size: 12pt;
+  text-align: center;
 }
 
 /*# sourceMappingURL=profile.css.map */
