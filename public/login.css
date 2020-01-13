@@ -59,6 +59,7 @@ body {
   border: 4px solid #795286;
   font-size: 12pt;
   text-align: center;
+  cursor: pointer;
 }
 .login-container .login-container__right h2 {
   margin-bottom: 60px;

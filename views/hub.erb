@@ -4,7 +4,7 @@
         <% next if User.find_by(username: post.user.username).active == false%>
     <div class="user-posts">
         <div class="user-posts__post">
-            <span><p>@<%= post.user.username %></p></span>
+            <span><a href="/user/<%= post.user.username %>">@<%= post.user.username %></a></span>
             <p><%= post.content %></p>
         </div>
     </div>

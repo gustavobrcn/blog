@@ -122,6 +122,10 @@ body {
   color: grey;
   font-size: 12pt;
 }
+.profile-container .profile-container__right .user-posts .user-posts__post span a {
+  text-decoration: none;
+  color: grey;
+}
 .profile-container .profile-container__right .account-page {
   display: grid;
   grid-template-rows: auto;
