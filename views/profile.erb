@@ -4,13 +4,14 @@
 <div class="profile-container__right">
             <div class="create-post">
                 <form class="create-post__form" action='/profile' method='POST'>
-                    <input class="create-post__text" type="text" name='content' placeholder="Speak Your Mind">
+                    <textarea rows="8" cols="73" class="create-post__text" type="text" name='content' placeholder="Speak Your Mind"></textarea>
                     <input class="create-post__button" type="submit" value="Post">
                 </form>
             </div>
     <% @user.posts.order(created_at: :desc).limit(20).each do |post|%>
         <div class="user-posts">
             <div class="user-posts__post">
+            <span><a href="/user/<%= post.user.username %>">@<%= post.user.username %></a></span>
                 <p><%= post.content %> </p>
             </div>
         </div>

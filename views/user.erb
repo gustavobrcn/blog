@@ -3,7 +3,8 @@
 <% @searched_user.posts.order(created_at: :desc).limit(20).each do |post|%>
     <div class="user-posts">
         <div class="user-posts__post">
-            <p><%= post.content %> </p>
+            <span><a href="/user/<%= post.user.username %>">@<%= post.user.username %></a></span>
+            <p ><%= post.content %> </p>
         </div>
     </div>
 <% end %>

@@ -1,14 +1,91 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
-    <link rel="stylesheet" href="./public/signup.css">
+    <link rel="stylesheet" href="/test.css">
+    <link rel="stylesheet" href="/public/profile.css">
     <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet"> 
     <meta charset="utf-8">
     <title>Profile</title>
   </head>
   <body>
+    <div class="top-panel">
+      <h2>$ocial $tudio</h2> 
+      <div class="user-searchbar">
+          <form class="user-searchbar__form" action="/user" method="POST">
+              <input class="user-searchbar__username" type="text" name="searched_user" placeholder="Search For Users">
+              <input class="user-searchbar__button" type="submit" value="Find User">
+          </form>
+      </div>
+  </div>
+    
+     
+  <div class="profile-container">
+      <div class="profile-container__left">
+          <div class='profile-navbar'>
+              <a href='/hub'>The Hub</a>
+              <a href="/profile>">Profile</a>
+              <a href='/account'>Account</a>
+              <a href='/logout'>Log Out</a>
+          </div>
+      </div>
+
+      <div class="profile-container__right">
+          <div class="account-page">
+              <div class="account-info">
+                <h2>Account Information</h2>
+                  <p><span>First Name: </span>Gustavo</p> 
+                  <p><span>Last Name: </span>Briceno </p> 
+                  <p><span>Username: </span>gusbrcn</p> 
+                  <p><span>Email: </span>gus@email.com</p> 
+                  <p><span>Birthday: </span>5/24/1994</p> 
+                  <div class="dark-mode">
+                    <h2>Display Setting</h2>
+                    <label class="dark-mode__label" for="dark-mode">Yang</label>
+                      <label class="switch">
+                          <input id="dark-mode-btn" type="checkbox">
+                          <span class="slider round"></span>
+                      </label>
+                  </div>
+              </div>
+              <div class="change-username">
+                  <h2>Change Username</h2>
+                  <form class="change-username__form"action='/change_username' autocomplete="off" method='POST'>
+                      <label for="username">Enter new username</label><br>
+                      <input class="change-username__text" type="text" name="new_username" autocomplete="off" placeholder="New User Name"><br>
+                      <label for="password">Enter your password to confirm the change</label><br>
+                      <input class="change-username__password" type="password" name="password" autocomplete="off" placeholder="Password">
+                      <input class="change-username__button" type="submit" value="Change Username">
+                  </form>
+              </div>
+              <div class="change-password">
+                  <h2> Change Password</h2>
+                  <form class="change-password__from" action='/change_password' autocomplete="off" method='POST'>
+                      <label for="username">Enter current password</label><br>
+                      <input class="change-password__current-password" type="password" name="current_password" placeholder="Current Password"><br>
+                      <label for="password">Enter your new password</label><br>
+                      <input class="change-password__new-password" type="password" name="new_password" placeholder="New Password">
+                      <label for="password">Confirm your new password</label><br>
+                      <input class="change-password__confirm-password" type="password" name="confirm_password" placeholder="Confirm New Password">
+                      <input class="change-password__button" type="submit" value="Change Password">
+                  </form>
+              </div>
+              <div class="disable-account">
+                  <h2> Disable Account</h2>
+                  <form class="disable-account__form" action="/disable_account" autocomplete="off" method="POST">
+                      <label for="username">Enter your password</label><br>
+                      <input class="disable-account__password" type="password" name="password" placeholder=" Password"><br>
+                      <label for="password">Confirm password</label><br>
+                      <input class="disable-account__confirm-password" type="password" name="confirm_password" placeholder="Confirm Password">
+                      <input class="disable-account__button" type="submit" value="Disable Account">
+                  </form>
+              </div>
+          </div>
+      </div>
+  </div>
+  <script src="/test.js"></script>
+      </body>
+  </html>
+      
+      
 
   
-
-    </body>
-</html>

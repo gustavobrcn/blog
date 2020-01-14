@@ -74,7 +74,7 @@ post '/user' do
     if @searched_user.active == true
         redirect "/user/#{params["searched_user"]}"
     elsif params["searched_user"] == session[:username]
-        redirect '/profile'
+        redirect "/profile/#{session[:username]}"
     elsif @searched_user.active == false
         redirect "/deactivated/#{params["searched_user"]}"
     end
@@ -82,9 +82,9 @@ end
         
 get '/user/:searched_user' do
     @searched_user = User.find_by(username: params[:searched_user])
-    pp @searched_user
-    @user = User.find_by(username: session[:username])
-    session[:user_id] = @user.id
+    if @searched_user.id == session[:user_id]
+        redirect "/profile/#{session[:username]}"
+    end
     erb :user
 end
 
